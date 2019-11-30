@@ -1,4 +1,3 @@
-import * as controller from "./app/controller";
-import './styles.css';
+import * as search from "./app/search/search.controller";
 
-controller.init();
+search.addSubmitListener();
