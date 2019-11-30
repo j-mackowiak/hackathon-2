@@ -2,13 +2,13 @@
 let recentList = [];
 
 const addToUpcoming = e => {
-    if(recentList.length < 3){
-        recentList.push(e); 
+    if (recentList.length < 3) {
+        recentList.push(e);
     } else {
         recentList.shift();
-        recentList.push(e); 
+        recentList.push(e);
     }
-    console.log(recentList);
+    console.log(!recentList.includes(e));
 }
 
 

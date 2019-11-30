@@ -9,14 +9,8 @@ const displayRecent = () => {
     recentBooks.forEach(book => {
         const liBook = document.createElement('li');
         liBook.innerText = book.title;
-
-        const id = book.cover_edition_key;
-        liBook.dataset.id = id;
-
         listRecent.appendChild(liBook);
     });
-
-    ctrl.addRecentListener();
 };
 
 

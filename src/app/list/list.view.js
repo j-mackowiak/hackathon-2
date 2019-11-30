@@ -27,6 +27,7 @@ const addliListener = () => {
    liList.forEach(el => el.addEventListener('click',sendToBook))
 }
 const sendToBook =(e)=> {
+    
    const id = e.currentTarget.dataset.id
    
    fetch(`https://openlibrary.org/api/books?bibkeys=OLID:${id}&format=json&jscmd=data`)
