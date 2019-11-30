@@ -45,7 +45,12 @@ const sendToBook = (e) => {
     fetch(`https://openlibrary.org/api/books?bibkeys=OLID:${id}&format=json&jscmd=data`)
         .then(res => res.json())
         .then(res => {
-             displayDetails(res['OLID:' + id]);
+    displayDetails(res['OLID:' + id]);  
+            
+            
+
+            ctrl.addToUpcoming(res['OLID:' + id]);
+            ctrl.displayRecent();
             
             
         });

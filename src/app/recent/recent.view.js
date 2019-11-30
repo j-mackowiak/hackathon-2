@@ -10,9 +10,8 @@ const displayRecent = () => {
         const liBook = document.createElement('li');
         liBook.innerText = book.title;
         listRecent.appendChild(liBook);
+
     });
 };
-
-
 
 export { displayRecent }
