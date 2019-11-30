@@ -1,4 +1,3 @@
-import * as controller from "./app/controller";
-import './styles.css';
+import*as list from './app/list/list.controller'
 
-controller.init();
+diplayBooks();
