@@ -33,7 +33,10 @@ const sendToBook = (e) => {
     fetch(`https://openlibrary.org/api/books?bibkeys=OLID:${id}&format=json&jscmd=data`)
         .then(res => res.json())
         .then(res => {
-            console.log(res);
+
+            ctrl.addToUpcoming(res['OLID:' + id]);
+            ctrl.displayRecent();
+            
             const onebook = document.createElement('p');
             onebook.innerText = res['OLID:' + id].title;
             wrapper.appendChild(onebook);
