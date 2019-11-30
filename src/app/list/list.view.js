@@ -30,7 +30,21 @@ const displayDetails = (book)=>{
     wrapper.innerHTML = "";
     const listb = document.createElement('p');
     listb.innerText=book.title;
-    //listb.innertext=book.by_statement;
+//console.log(book);
+    const bookimage = document.createElement('img');
+    bookimage.setAttribute('src',book.cover.large);
+
+    const bookAuthor = document.createElement('p');
+   bookAuthor.innerText = book.authors[0].name;
+
+   const numberPages = document.createElement('p');
+   numberPages.innerText = book.number_of_pages;
+    const namePublisher = document.createElement('p');
+    namePublisher.innerText = book.publishers[0].name;
+    wrapper.appendChild(namePublisher);
+    wrapper.appendChild(bookAuthor);
+    wrapper.appendChild(numberPages);
+    wrapper.appendChild(bookimage);
     wrapper.appendChild(listb);
     
    console.log(book);
