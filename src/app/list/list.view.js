@@ -15,7 +15,9 @@ const displayBooks = () => {
 
         liBook.innerText = book.title;
         const id = book.cover_edition_key;
+        
         liBook.dataset.id=id;
+
         listBooks.appendChild(liBook);
 
     });
@@ -28,10 +30,18 @@ const addliListener =() =>{
 }
 const sendToBook =(e)=> {
    const id = e.currentTarget.dataset.id
-
+   
    fetch(`https://openlibrary.org/api/books?bibkeys=OLID:${id}&format=json&jscmd=data`)
    .then(res=>res.json())
-   .then(res=>console.log(res))
+   .then(res=>console.log(res['OLID:'+id].title))
+       
+  const wrapper = document.querySelector('#display-book ul');
+     wrapper.innerText = '';
+    const onebook = document.createElement('li');
+     onebook.innerText =res.title
+
+   
+    
 
 }
 
