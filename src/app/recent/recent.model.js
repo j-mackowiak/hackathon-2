@@ -8,7 +8,6 @@ const addToUpcoming = e => {
         recentList.shift();
         recentList.push(e);
     }
-    console.log(!recentList.includes(e));
 }
 
 
