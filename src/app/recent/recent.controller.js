@@ -7,6 +7,9 @@ const getRecentList = () => model.getRecentList();
 
 const displayRecent = () => view.displayRecent();
 
-const sendToBook = e => list.sendToBook(e);
+const addRecentListener = () => {
+    const liList = document.querySelectorAll('#recentList ul li');
+    liList.forEach(el => el.addEventListener('click', list.sendToBook))
+}
 
-export { addToUpcoming, displayRecent, getRecentList, sendToBook }
+export { addToUpcoming, displayRecent, getRecentList, addRecentListener }

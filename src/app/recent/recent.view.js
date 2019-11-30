@@ -8,6 +8,7 @@ const displayRecent = () => {
 
     recentBooks.forEach(book => {
         const liBook = document.createElement('li');
+        liBook.dataset.id = book.id;
         liBook.innerText = book.title;
         listRecent.appendChild(liBook);
 

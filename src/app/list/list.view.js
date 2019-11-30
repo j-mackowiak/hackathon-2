@@ -25,34 +25,29 @@ const addliListener = () => {
     const liList = document.querySelectorAll('#searchList ul li');
     liList.forEach(el => el.addEventListener('click', sendToBook))
 }
-const displayDetails = (book)=>{
+
+const displayDetails = (book) => {
     const wrapper = document.querySelector('#display-book');
     wrapper.innerHTML = "";
     const listb = document.createElement('p');
-    listb.innerText=book.title;
-    //listb.innertext=book.by_statement;
+    listb.innerText = book.title;
     wrapper.appendChild(listb);
-    
-   console.log(book);
 
 }
 
-
-;
 const sendToBook = (e) => {
     const id = e.currentTarget.dataset.id
-    
+
     fetch(`https://openlibrary.org/api/books?bibkeys=OLID:${id}&format=json&jscmd=data`)
         .then(res => res.json())
         .then(res => {
-    displayDetails(res['OLID:' + id]);  
-            
-            
+            const objPlus = res['OLID:' + id];
+            objPlus.id = id;
 
-            ctrl.addToUpcoming(res['OLID:' + id]);
+            displayDetails(objPlus);
+
+            ctrl.addToUpcoming(objPlus);
             ctrl.displayRecent();
-            
-            
         });
 }
 
