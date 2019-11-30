@@ -1,7 +1,4 @@
 import * as ctrl from './list.controller';
-import { getBooks } from '../search/search.model';
-import { thisExpression } from '@babel/types';
-
 
 const displayBooks = () => {
     const listBooks = document.querySelector('#searchList ul');
@@ -19,22 +16,24 @@ const displayBooks = () => {
         listBooks.appendChild(liBook);
 
     });
-    
-    if(books.length)addLiListener();
+
+    if(books.length)addliListener();
 };
 
-const addliListener =() =>{
+const addliListener = () => {
     const liList = document.querySelectorAll('#searchList ul li');
    liList.forEach(el => el.addEventListener('click',sendToBook))
 }
-const sendToBook =(e)=> {
+
+const sendToBook = e => {
    const id = e.currentTarget.dataset.id
-
    fetch(`https://openlibrary.org/api/books?bibkeys=OLID:${id}&format=json&jscmd=data`)
-   .then(res=>res.json())
-   .then(res=>console.log(res));
+   .then(res => res.json())
+   .then(res => {
+        ctrl.addToUpcoming(res);
+        ctrl.displayRecent();
 
-   ctrl.addToUpcoming(book);
+    });
 }
 
-export {displayBooks}
+export {displayBooks, sendToBook}
