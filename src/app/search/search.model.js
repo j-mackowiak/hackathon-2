@@ -1,3 +1,6 @@
+import * as ctrl from './search.controller'
+let books = [];
+
 const debounce = (func, delay) => {
     let inDebounce;
     return function () {
@@ -18,11 +21,13 @@ const searchBooks = () => {
     .then(res => res.json())
     .then(json => {
         for(let i=0; i<6; i++) {
-        arr.push(json.docs[i]);
+            arr.push(json.docs[i]);
         }
+        books = arr;
+        ctrl.displayBooks();
     });
-    
-    return arr;
 }
 
-export { searchBooks, debounce };
+const getBooks = () => books; 
+
+export { searchBooks, debounce, getBooks };
